@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<!-- HEADER START -->
+<header class="header-bg" style="background-image:url('{% static 'images/restaurant.jpg'%}')">
+  <ul class="">
+      <div class="logo">
+          <h1>RESTAURANT</h1>
+      </div>
+      <div>
+        <li><a href="" class="active">Home</a></li>
+        <li><a href="#about1">About</a></li>
+        <li><a href="#pricing1">Pricing</a></li>
+        <li><a href="#menu">MENU</a></li>
+        <li><a href="">CONTACT</a></li>
+      </div>
+      <div class="book-btn" style="float:right;padding-top:15px;">
+        <button type="button">Book A Table</button>
+      </div>
+    </ul>
+</header>
+<!-- HEADER START -->
+
+<!-- START-CONTAINER -->
+<section class="start-container" style="background-image: url('{% static 'images/restaurant.jpg' %}');">
+
+</section>
+<!-- START-END -->
+
+<!-- ABOUT START -->
+
+<div class="container about" id="about1">
+    <div class="row">
+        <div class="col-md-6 text-center">
+            <h1 class="about-heading">About Us</h1>
+            <div class=""><i style="font-size:25px; padding-top:20px;" class="fa fa-cutlery"></i></div>
+            <p class="desc-about">Restaurant is a place for simplicity. Good food, good beer, and good service. Simple is the name of the game, and we’re good at finding it in all the right places, even in your dining experience. We’re a small group from Denver, Colorado who make simple food possible. Come join us and see what simplicity tastes like.</p>
+        </div>
+        <div class="col-md-6 text-center about-img">
+            <img src="{%static 'images/About/img1.jpg' %}" width="200" height="220">
+            <img src="{%static 'images/About/img2.jpg' %}" width="200" height="220">
+            <img src="{%static 'images/About/img3.jpg' %}" width="200" height="220">
+            <img src="{%static 'images/About/img4.jpg' %}" width="200" height="220">
+        </div>
+    </div>
+</div>
+
+<!-- ABOUT END -->
+
+<!--PRICING START-->
+<section class="bg-pricing" id="pricing1" style="background-image:url('{% static 'images/Pricing/pricing.jpg' %}')">
+    <h1><span>Affordable </span>Pricing</h1>
+</section>
+
+<!--PRICING END-->
+
+<!-- MENU START -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>
