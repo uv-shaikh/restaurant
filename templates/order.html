@@ -1,0 +1,72 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<!-- HEADER START -->
+<header style="margin-bottom:150px;">
+  <ul class="fixed-top navbar-expend-lg">
+      <div class="logo">
+          <h1>RESTAURANT</h1>
+      </div>
+      <div>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'index' %}">About</a></li>
+        <li><a href="{% url 'index' %}">Pricing</a></li>
+        <li><a href="{% url 'index' %}" >MENU</a></li>
+        <li><a href="{% url 'index' %}" >CONTACT</a></li>
+        <li><a href="{% url 'order' %}" >ORDER</a></li>
+      </div>
+      <div class="book-btn" style="float:right;padding-top:15px;">
+         <a href="{% url 'book' %}"><button type="button">Book A Table</button></a>
+      </div>
+      <ul>
+    </ul>
+  </header>
+
+<!-- MENU START -->
+   <div class="container">
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Des</th>
+            <th scope="col">View</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+            
+          </tr>
+        </thead>
+        <tbody>
+            {% for pro in object_list %}
+          <tr>
+            <td>{{ pro.id}}</td>
+            <td>{{ pro.name }}</td>
+            <td>{{ pro.des }}</td>
+            <td><a href="{% url "productview" pro.id %}" >view</a></td>
+            <td><a href="{% url "edit" pro.id %}"><i class="fa fa-edit"></i></a></td>
+            <td><a href="{% url "delete" pro.id %}"><i class="fa fa-trash"></i></a></td>
+          </tr>
+           {% endfor %}
+        </tbody>
+      </table>
+   </div>
+<!-- MENU END -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

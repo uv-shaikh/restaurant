@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<!-- HEADER START -->
+<header>
+  <ul class="fixed-top navbar-expend-lg">
+      <div class="logo">
+          <h1>RESTAURANT</h1>
+      </div>
+      <div>
+        <li><a href="{% url 'index' %}">Home</a></li>
+        <li><a href="{% url 'index' %}">About</a></li>
+        <li><a href="{% url 'index' %}">Pricing</a></li>
+        <li><a href="{% url 'index' %}" >MENU</a></li>
+        <li><a href="{% url 'index' %}" >CONTACT</a></li>
+        <li><a href="{% url 'order' %}" >ORDER</a></li>
+      </div>
+      <div class="book-btn" style="float:right;padding-top:15px;">
+         <a href="{% url 'book' %}"><button type="button">Book A Table</button></a>
+      </div>
+      <div class="book-btn mt-1" style="float:right;padding-top:15px;">
+        <a href="{% url 'showmycart'%}" type="button" class="btn btn-primary fa fa-cart-plus ">
+        </a>
+      </div>
+      <ul>
+    </ul>
+  </header>
+
+<!-- MENU START -->
+
+    <div class="container" style="margin-top:150px;">
+      {% if messages %}
+          <div class="alert alert-primary" role="alert">
+            {% for i in messages %}
+            {{i}}
+            {% endfor %}
+          </div>
+          {% endif %}
+      <div class="row">
+        <div class="col-md-6 col-12">
+          <div class="thumb-image">
+            <a href="{% url 'productview' p.id %}">
+              <img src="{{ p.images.url }}" data-imagezoom="true" alt=" "
+                class="img-responsive" style="height:300px;"></a>
+          </div>
+        </div>
+        <div class="col-md-6 col-12">
+          <h3>{{p.name}}</h3>
+          <div class="caption">
+            <div class="clearfix mt-3"> </div>
+            <h4 class="mt-3">Rs.
+              {{p.price}}</h4>
+          </div>
+          <div class="desc_single mt-3">
+            <h5>Description:</h5>
+            <p>{{p.des}}</p>
+            <p></p>
+          </div>
+           <div class="desc_single mt-4">
+            <form action="{%url 'addtocart' p.id %}" method="POST">
+              {% csrf_token %}
+              <a href="{%url 'showmycart' %}" style="text-decoration:none;">
+              <button type="submit" class="btn btn-success btn-block">
+                <i class="fa fa shopping-cart"></i>
+                Add To Cart
+              </button>
+            </a>
+            </form>
+            </div>
+        </div>
+      </div>
+    </div>
+<!-- MENU END -->
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

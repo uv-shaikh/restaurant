@@ -28,10 +28,19 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
+TWILIO_ACCOUNT_SID = os.getenv("TWILIO_ACCOUNT_SID")
+TWILIO_AUTH_TOKEN = os.getenv("TWILIO_AUTH_TOKEN")
+TWILIO_NUMBER = os.getenv("TWILIO_NUMBER")
+SMS_BROADCAST_TO_NUMBERS = [ 
+    "", # use the format +19735551234
+    "", 
+    "", 
+]
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
+    'report_builder',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -126,4 +135,13 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+JAZZMIN_SETTINGS = {
+    # title of the window (Will default to current_admin_site.site_title if absent or None)
+    "site_logo": "images/admin/uv.webp",
+    "custom_css": "css/admin.css",
+}
+
+JAZZMIN_UI_TWEAKS = {
+    # "theme": "darkly",
+    # "dark_mode_theme": "darkly",
+}

@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
+    <title>Document</title>
+    <style>
+    </style>
+</head>
+<body>
+
+<!-- HEADER START -->
+<header>
+  <ul class="fixed-top navbar-expend-lg">
+      <div class="logo">
+          <h1>RESTAURANT</h1>
+      </div>
+      <div>
+        <li><a href="{% url 'index' %}">HOME</a></li>
+        <li><a href="{% url 'index' %}">ABOUT</a></li>
+        <li><a href="{% url 'index' %}">PRICING</a></li>
+        <li><a href="{% url 'index' %}" >MENU</a></li>
+        <li><a href="{% url 'index' %}" >CONTACT</a></li>
+        <li><a href="{% url 'order' %}" >ORDER</a></li>
+      </div>
+      <div class="book-btn" style="float:right;padding-top:15px;">
+         <a href="{% url 'book' %}"><button type="button">Book A Table</button></a>
+      </div>
+      <div class="book-btn mt-1" style="float:right;padding-top:15px;">
+        {% for cart in cart %}
+        <a href="{% url 'shopcart' cart.id %}" type="button" class="btn btn-primary fa fa-cart-plus ">
+        </a>
+        {% endfor %}
+      </div>
+      <div class="dropdown">
+        <a href="#" class="btn mt-3" data-toggle="dropdown">
+          <i class="fa fa-user text-white" style="font-size:25px;"></i>
+        </a>
+        <div class="dropdown-menu text-dark" style="width:350px; min-height:150px; margin-top:13px; margin-left:-230px">
+               <h4 class="text-primary text-center">Welcome {{per.username}}</h4>
+               <hr>
+            <div class="card-body">
+              <p>Name:{{per.username}}</p>
+              <p>Email:{{per.email}}</p>
+              <p>Phone:{{per.phone}}</p>
+            </div>
+            <div class="book-btn" style="padding-top:15px;margin-left:20px;">
+              <a href="{% url 'logout' %}"><button type="button">Logout</button></a>
+           </div><hr>
+            <div class="text-center">
+                <a href="{% url 'editprofile'%}" class="card-link text-center text-dark d-block" style="text-decoration:none;">Edit Profile<i class="fa fa-cog ml-2"></i></a>
+            </div>
+        </div>
+      </div>
+      
+    </ul>
+</header>
+ 
+<div class="container" style="margin-top:150px;">
+  <table class="table table-image text-center">
+    <thead>
+      <tr>
+        <th scope="col">SrNo</th>
+        <th scope="col">Product</th>
+        <th scope="col">Product Name</th>
+        <th scope="col">Price</th>
+        <th scope="col">Added on</th>
+        <th scope="col">Remove</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for q in al%}
+      <tr>
+        <th scope="row">{{forloop.counter}}</th>
+        <td class="w-25">
+          <img src="{{ q.images.url }}" style="height:80px;" class="img-fluid img-thumbnail" alt="Sheep">
+        </td>
+        <td style="text-align:center;">{{q.name}}</td>
+        <td>Rs.{{q.price}}</td>
+        <td>{{q.added_on}}</td>
+        <td><a class="btn btn-danger btn-xs" data-title="Delete" data-target="#delete"
+        href="{%url 'deleteitem' q.id %}"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete</a>
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -21,33 +21,41 @@
           <h1>RESTAURANT</h1>
       </div>
       <div>
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about1">About</a></li>
-        <li><a href="#pricing1">Pricing</a></li>
-        <li><a href="#menu" >MENU</a></li>
-        <li><a href="" >CONTACT</a></li>
+        <li><a href="{% url 'index' %}">HOME</a></li>
+        <li><a href="{% url 'index' %}">ABOUT</a></li>
+        <li><a href="{% url 'index' %}">PRICING</a></li>
+        <li><a href="{% url 'index' %}" >MENU</a></li>
+        <li><a href="{% url 'index' %}" >CONTACT</a></li>
+        <li><a href="{% url 'order' %}" >ORDER</a></li>
       </div>
       <div class="book-btn" style="float:right;padding-top:15px;">
-        <button type="button">Book A Table</button>
+         <a href="{% url 'book' %}"><button type="button">Book A Table</button></a>
       </div>
-      <div>
-        <img src="" id="icon">
+      <div class="book-btn mt-1" style="float:right;padding-top:15px;">
+        <a href="{% url 'showmycart'%}" type="button" class="btn btn-primary fa fa-cart-plus ">
+        </a>
       </div>
-      <ul>
-      <li>
-        <form method="GET" class="search">
-          <div class="dropdown">
-            <button type="button" class="btn btn-primary fa fa-cart-plus dropdown-toggle" data-toggle="dropdown">
-            </button>
-            <div class="dropdown-menu text-dark" style="width:200px; height:150px;overflow:auto">
-              {% for i in abc %}
-              <p class="dropdown-item" href="#">{{i.name}} {{i.price}}</p>
-              {% endfor %}
+      <div class="dropdown">
+        <a href="#" class="btn mt-3" data-toggle="dropdown">
+          <i class="fa fa-user text-white" style="font-size:25px;"></i>
+        </a>
+        <div class="dropdown-menu text-dark" style="width:350px; min-height:150px; margin-top:13px; margin-left:-230px">
+               <h4 class="text-primary text-center">Welcome {{per.username}}</h4>
+               <hr>
+            <div class="card-body">
+              <p>Name:{{per.username}}</p>
+              <p>Email:{{per.email}}</p>
+              <p>Phone:{{per.phone}}</p>
             </div>
-          </div>
-        </form>
-      </li>
-      <ul>
+            <div class="book-btn" style="padding-top:15px;margin-left:20px;">
+              <a href="{% url 'logout' %}"><button type="button">Logout</button></a>
+           </div><hr>
+            <div class="text-center">
+                <a href="{% url 'editprofile'%}" class="card-link text-center text-dark d-block" style="text-decoration:none;">Edit Profile<i class="fa fa-cog ml-2"></i></a>
+            </div>
+        </div>
+      </div>
+      
     </ul>
 </header>
 <!-- HEADER START -->
@@ -88,30 +96,26 @@
 <!-- MENU START -->
 <div class="container mt-5 menu" id="menu">
     <ul class="navbar nav justify-content-center">
-        <li class="nav-item">
-          <a class="nav-link active1" data-toggle="tab" href="#home">All</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#profile">Breakfast</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#contact">Special</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#">Desert</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#">Dinner</a>
-          </li>
-          <li class="nav-item">
+      
+
+
+        {% for c in cat %}
+				
+				<ul >
+					<li style="list-style-type: none;"><a data-toggle="collapse" href="#" aria-expanded="false">
+            <span class="lnr lnr-arrow-right"></span><a href="/catwise/{{ c.name }}/">{{ c }}</a><span class="number"></span></a>
+					</li>
+				</ul>
+      {% endfor %}  
+          <li>
           <form method="GET" class="form-inline ml-5">
            <input type="text" name="search" class="form-control" placeholder="Search">
            <button type="submit" class="ml-3 fa fa-search" style="border:none;"></button>
           </form>
           </li>         
-      </ul>
+      </ul> 
             
-            {% comment %} <div class="card-deck mt-4">
+      {% comment %} <div class="card-deck mt-4">
              {% for i in pro %}
                <div class="card" style="width: 13rem;height:320px;">
                   <img class="card-img-top img-fluid" style="height:200px;width: 13rem;"  src="{{ i.images.url }}" alt="Card image cap">
@@ -123,22 +127,20 @@
                </div>
              {% endfor %}
             </div> {% endcomment %}
-
-
-
             <div class="card-deck mt-4">
              {% for i in pro %}
+             <a class="menu-card" href="{% url 'productview' i.id %}" style="text-decoration:none;">
                 <div class="card" style="max-width: 25%;min-height:320px;">
                   <img class="card-img-top img-fluid" style="height:200px;" src="{{i.images.url}}" alt="Card image cap">
                   <div class="card-body ml-0 border-primary">
-                    <p class="card-title mb-0 text-left" style="font-weight:700">{{i}}</p>
-                    <p class="text-capitalize">{{i.des}}</p>
-                    <a href="#" style="color:green;font-weight:700;font-size:20px;text-decoration:none;" class="mb-0">From ₹{{i.price}}</a>
+                    <p class="card-title text-dark mb-0 text-left" style="font-weight:700;text-decoration:none;">{{i.name}}</p>
+                    <p class="text-capitalize text-secondary text-decoration-none">{{i.des}}</p>
+                    <a href="" class="btn btn-success">Add To Cart</a>
                   </div>
                 </div>
-              {% endfor %}
-               
-</div>
+             {% endfor %}
+              </a>
+            </div>
 </div>
 <!-- MENU END -->
 

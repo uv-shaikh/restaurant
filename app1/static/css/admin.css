@@ -1,0 +1,42 @@
+img{
+    height: 231px;
+    width:285px;
+}
+.sidebar{
+    color:black;
+}
+.nav-sidebar .nav-item>.nav-link {
+    position: relative;
+    color:black;
+}
+p{
+    color: black;
+}
+.sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active{
+    background-color: green;
+    color:black;
+}
+#header{
+    height: 70px;
+    background: #aabbdd;
+    color: #000;
+}
+.navbar-white {
+    background-color: white;
+    color: #1f2d3d;
+}
+.main-footer{
+    color:white;
+}
+.accent-primary a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn) {
+    color: blue;
+}
+.accent-primary a:not(.dropdown-item):not(.btn-app):not(.nav-link):not(.brand-link):not(.page-link):not(.btn):hover {
+    color: green;
+}
+.sidebar .nav-link p{
+    color: white
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__display {
+    color: black;
+}

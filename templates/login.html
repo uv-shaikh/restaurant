@@ -1,0 +1,64 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FORM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+	<style type="text/css">
+	</style>
+</head>
+<body>
+     <div id="div1">
+      <form method="POST">
+        {% csrf_token %}
+        <h3>Log in</h3><br>
+        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+        {% if messages %}
+         <div class="alert alert-primary" role="alert">
+          {% for i in messages %}
+            {{i}}
+          {% endfor %} 
+          </div>
+        {% endif %}
+          <div class="input-data">
+            <input type="email" name="email" required>
+            <label>Email:</label>
+          </div>
+          <div class="input-data">
+            <input type="password" name="password" id="myInput" required>
+            <label>password:</label>
+          </div><br>
+          <section class="text-left" style="margin-left:0px;">
+            <input type="checkbox" class="text-left" style="font-size:20px;" onclick="myFunction()">Show Password
+          </section>
+          <div class="input-data">
+            <a href="{% url 'forgotpass' %}">Forgot passwod?</a>
+          </div>
+          <div class="log-btn">
+          <button class="btn">LOGIN</button>
+          </div>
+          <div class="">
+            <span>Not a Member?<a href="{% url 'register' %}">Signup</a></span>
+          </div>
+      </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+    <script>
+      function myFunction() {
+        var x = document.getElementById("myInput");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
+
+</body>
+</html>

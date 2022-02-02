@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    {% comment %} <h1>welcome to register</h1>
+    <form method="POST">
+      {% csrf_token %}
+      {{ form }}
+      <input type="submit" value="Register">
+    </form> {% endcomment %}
+
+    <div id="div1">
+      <form method="POST">
+        {% csrf_token %}
+        <h3>Edit profile</h3>
+          <div class="input-data">
+            <input type="text" name="username" value="{{data.username}}" required>
+          </div>
+          <div class="input-data">
+            <input type="Email" name="email" value="{{data.email}}" required>
+          </div>
+          <div class="input-data">
+            <input type="number" name="phone" value="{{data.phone}}" required>
+          </div>
+          <div class="log-btn">
+          <button type="submit" class="btn" >Submit</button>
+          </div> 
+      </form>
+    </div>
+</body>
+</html>

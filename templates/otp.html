@@ -1,0 +1,34 @@
+{% comment %} <html>
+    <body>
+        <form method="POST">
+            {% csrf_token %}
+            <input type="number" id="id_otp" name="otp" value="{{ otp }}" placeholder="Enter OTP">
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+    </body>
+</html> {% endcomment %}
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>FORM</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+	<style type="text/css">
+	</style>
+</head>
+<body>
+     <div id="div1" style="padding-bottom:70px;">
+      <form method="POST">
+        {% csrf_token %}
+          <div class="input-data">
+            <input type="number" id="id_otp" name="otp" value="{{ otp }}" required>
+            <label>Enter OTP:</label>
+            <button type="submit" class="btn btn-success" style="margin-top:30px;">Submit</button>   
+      </form>
+    </div>
+</body>
+</html>

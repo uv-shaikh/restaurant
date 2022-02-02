@@ -150,7 +150,9 @@ html {
         .menu ul li a.active1{
             border-bottom:1px solid black;
         }
-
+        .menu-card:hover{
+            text-decoration:none;
+        }
         .beer-section{
             background-repeat:none;
             background-attachment: fixed;
@@ -333,7 +335,6 @@ html {
             padding-left: 2.375rem;
             border-radius: 50px;
         }
-
 
             
 
