@@ -7,6 +7,7 @@ from .forms import signupforms
 import smtplib, ssl
 from django.contrib import messages
 import random
+import razorpay
 
 def register(request):
     if request.method=="POST":
@@ -231,12 +232,12 @@ def show_mycart(request):
         obj = Signup.objects.get(email=request.session['email'])
         all = Mycart.objects.filter(user_id=obj.id)
         l=[]
-        p=0
+        total=0
         for i in all:
             l.append(i.product)
-            p=p+i.product.price
-        print(p)
-        return render(request,'shop-cart.html',{'al':l,'all':all,'n':obj,'p':p})
+            total=total+i.product.price
+        print(total)
+        return render(request,'shop-cart.html',{'al':l,'all':all,'n':obj,'total':total})
     else:
         return redirect('login')
     return render(request,'shop-cart.html')
@@ -247,3 +248,29 @@ def remove_cart(request,id):
         y = get_object_or_404(Mycart,product=id,user_id=obj.id)
         y.delete()
         return redirect('showmycart')
+
+def checkout(request):
+    if request.session.has_key('email'):
+        obj = Signup.objects.get(email=request.session['email'])
+        all = Mycart.objects.filter(user_id=obj.id)
+        l=[]
+        total=0
+        for i in all:
+            l.append(i.product)
+            total=total+i.product.price
+            pay=total*100
+
+        if request.method == "POST":
+            amount = total
+
+            client = razorpay.Client(
+            auth=("rzp_test_KBKE2eLQ5xr4ss", "tSmsdbNZbxf0bvdtCWzrJfM7"))
+
+            payment = client.order.create({'amount': amount, 'currency': 'INR',
+                                       'payment_capture': '1'})
+
+            return redirect('success')
+    return render(request,'checkout.html',{'al':l,'total':total,'pay':pay})
+
+def success(request):
+    return render(request,'success.html')

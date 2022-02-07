@@ -16,17 +16,17 @@
 
 <!-- HEADER START -->
 <header>
-  <ul class="fixed-top navbar-expend-lg">
+  <ul class="fixed-top navbar-expend-lg nav">
       <div class="logo">
           <h1>RESTAURANT</h1>
       </div>
-      <div>
+      <div class="myDIV">
         <li><a href="{% url 'index' %}">HOME</a></li>
         <li><a href="{% url 'index' %}">ABOUT</a></li>
         <li><a href="{% url 'index' %}">PRICING</a></li>
-        <li><a href="{% url 'index' %}" >MENU</a></li>
-        <li><a href="{% url 'index' %}" >CONTACT</a></li>
-        <li><a href="{% url 'order' %}" >ORDER</a></li>
+        <li><a href="{% url 'index' %}">MENU</a></li>
+        <li><a href="{% url 'index' %}">CONTACT</a></li>
+        <li><a href="{% url 'order' %}">ORDER</a></li>
       </div>
       <div class="book-btn" style="float:right;padding-top:15px;">
          <a href="{% url 'book' %}"><button type="button">Book A Table</button></a>
@@ -320,5 +320,15 @@
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
+<script>
+  // Add active class to the current button (highlight it)
+  var selector = '.nav li a';
+
+  $(selector).on('click', function(){
+      $(selector).removeClass('active');
+      $(this).addClass('active');
+  });
+  </script>
 </body>
 </html>

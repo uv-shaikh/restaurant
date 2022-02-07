@@ -11,7 +11,6 @@
     justify-content: center;
     min-height: 100vh;
     background:url("image/bg.jpg");
-    background: linear-gradient(-135deg,#c850c0,#4158d0);
   }
   #div1{
     background: white;

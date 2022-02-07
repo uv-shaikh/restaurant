@@ -7,6 +7,12 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="{% static 'css/login.css' %}">
 	<style type="text/css">
+    body{
+      background-image: url('{% static 'images/login/login.webp' %}');
+      background-repeat: no-repeat;
+      background-size:cover;
+      background-position: center;
+    }
 	</style>
 </head>
 <body>
@@ -31,7 +37,7 @@
             <label>password:</label>
           </div><br>
           <section class="text-left" style="margin-left:0px;">
-            <input type="checkbox" class="text-left" style="font-size:20px;" onclick="myFunction()">Show Password
+            <input type="checkbox" class="text-left" style="font-size:20px; margin-left:-80px;" onclick="myFunction()"> Show Password
           </section>
           <div class="input-data">
             <a href="{% url 'forgotpass' %}">Forgot passwod?</a>
